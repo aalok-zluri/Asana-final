@@ -40,16 +40,18 @@ app.get('/oauth/redirect', (req, res) => {
       //   const data =res.data;
       // })
       console.log(response.data);
-    const userinfo = new Userdata({
-   
-         data:require.data,
-        //  gid:data.gid,
-        //  name:data.name,
-        //  resource_type:name.resource_type
-  });    
+    // const userinfo = new Userdata(
+    //   {
+    //   data : response.data
+    // });   
+    // const info= new Userdata({
+    //   gid:data.gid,
+    //   name:data.name,
+    //   resource_type:data.resource_type
+    // }) 
      try{
-       db.collection('projects').insertOne({gid:userinfo.gid,name:userinfo.name,resource_type:userinfo.resource_type});
-        const savedPost = await userinfo.save()
+       db.collection('projects').insertOne(response.data);
+        // const savedPost = await userinfo.save()
         //  db.collection('projects').insertOne(savedPost);
         res.send("Userinfo Saved Successfully ");
         console.log("Userinfo Saved Successfully.");
